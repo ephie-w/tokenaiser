@@ -7,6 +7,5 @@ instruction: You are the root orchestrator agent responsible for understanding
   the request involves document processing or robotic automation, call
   PRAFlowAgent.
 sub_agents:
-  - config_path: ./DataFlow.yaml
-  - config_path: ./PRAFlow.yaml
+  - config_path: ./taskParse.yaml
 tools: []

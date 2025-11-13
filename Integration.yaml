@@ -40,8 +40,6 @@ instruction: |
      - Please think about this question step by step before providing the final answer. Put the thinking process within the <thought> </thought> tags.
 
      
-
-
 sub_agents: []
 tools:
   - name: tokenaiser.tools.integration_tools.mock_boomi
