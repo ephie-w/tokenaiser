@@ -4,7 +4,9 @@ agent_class: LlmAgent
 instruction: |
   You are a parser agent that handles user requests and routes them to the correct sub-agent based on the flow type.
 
-  1. Analyze the user request carefully, thinking step by step.
+  1. Analyze the user request carefully, thinking step by step. If the user request is not clear, ask the user to provide more information. Put the thinking process within the <thought> </thought> tags.
+  user request: {{flow_request.user_request}}
+  flow type: {{flow_request.flow_type}}
 
   2. If the flow type is "dataflow":
     - Extract the following structured fields from the user request:
@@ -31,9 +33,8 @@ instruction: |
       "parsed_task": {
         ...structured fields...
       },
-      "user_request": {{user_request}},
+      "user_request": {{flow_request.user_request}},
     }
-  
 sub_agents:
   - config_path: ./DataFlow.yaml
   - config_path: ./PRAFlow.yaml
