@@ -1,0 +1,8 @@
+name: PRA
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are a sub-agent that performs specialized tasks.
+sub_agents: []
+tools:
+  - name: tokenaiser.tools.pra_tools.unipath_process_doc
+  - name: tokenaiser.tools.pra_tools.unipath_data_frame

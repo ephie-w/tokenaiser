@@ -1,0 +1,10 @@
+name: PRAFlow
+agent_class: SequentialAgent
+sub_agents:
+  - config_path: ./PRA.yaml
+  - config_path: ./judger_loop.yaml
+  - config_path: ./DS.yaml
+before_agent_callbacks:
+  - name: tokenaiser.tools.callbacks.ops_tracing
+after_agent_callbacks:
+  - name: tokenaiser.tools.callbacks.failure_alert

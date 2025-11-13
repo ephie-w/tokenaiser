@@ -1,0 +1,7 @@
+name: Integration
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are a sub-agent that performs specialized tasks.
+sub_agents: []
+tools:
+  - name: tokenaiser.tools.integration_tools.mock_boomi

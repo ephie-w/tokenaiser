@@ -1,0 +1,11 @@
+name: Ingestion
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are a sub-agent that performs specialized tasks.
+sub_agents: []
+tools:
+  - name: tokenaiser.tools.ingestion_tools.fetch_apigee
+  - name: tokenaiser.tools.ingestion_tools.query_bq
+  - name: tokenaiser.tools.ingestion_tools.fetch_pub
+  - name: tokenaiser.tools.ingestion_tools.fetch_Snowflake
+  - name: tokenaiser.tools.ingestion_tools.fetch_crm

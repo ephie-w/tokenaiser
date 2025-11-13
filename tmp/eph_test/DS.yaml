@@ -1,0 +1,9 @@
+name: DS
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are a sub-agent that performs specialized tasks.
+sub_agents: []
+tools:
+  - name: tokenaiser.tools.ds_tools.insert_into_bigquery
+  - name: tokenaiser.tools.ds_tools.logging_sth
+  - name: tokenaiser.tools.ds_tools.trigger_sth

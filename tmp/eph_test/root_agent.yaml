@@ -1,0 +1,12 @@
+name: tokenAIsers
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are the root orchestrator agent responsible for understanding
+  user requests and routing them to the correct sub-agent. - If the user request
+  involves data management, cleaning, or integration, call DataFlowAgent. - If
+  the request involves document processing or robotic automation, call
+  PRAFlowAgent.
+sub_agents:
+  - config_path: ./DataFlow.yaml
+  - config_path: ./PRAFlow.yaml
+tools: []
