@@ -3,7 +3,7 @@ Author: Yifei Wang
 Github: ephiewangyf@gmail.com
 Date: 2025-11-14 14:06:39
 LastEditors: ephie && ephiewangyf@gmail.com
-LastEditTime: 2025-11-14 14:36:55
+LastEditTime: 2025-11-14 14:58:35
 FilePath: /tokenaiser/subagents/analyst_agent/agent.py
 Description: 
 '''
@@ -29,10 +29,6 @@ analytics_agent = Agent(
     model=os.getenv("ANALYTICS_AGENT_MODEL", ""),
     name="analytics_agent",
     instruction="You are an analyst agent responsible for analyzing data and providing insights.",
-    code_executor=VertexAiCodeExecutor(
-        optimize_data_file=True,
-        stateful=True,
-    ),
     tools=[
         tools.bq_get_table_info,
         tools.bq_get_dataset_info,
