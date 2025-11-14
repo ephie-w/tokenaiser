@@ -3,7 +3,7 @@ Author: Yifei Wang
 Github: ephiewangyf@gmail.com
 Date: 2025-11-14 14:06:39
 LastEditors: ephie && ephiewangyf@gmail.com
-LastEditTime: 2025-11-14 15:15:14
+LastEditTime: 2025-11-14 16:13:54
 FilePath: /tokenaiser/subagents/analyst_agent/agent.py
 Description: 
 '''
@@ -41,7 +41,8 @@ analytics_agent = Agent(
         tools.bq_get_table_statistics,
         tools.bq_get_table_partitions,
         tools.bigquery_nl2sql,
-        tools.get_insights
+        tools.get_insights,
+        tools.run_vertex_ai_code_executor
     ],
     generate_content_config=types.GenerateContentConfig(temperature=0.01),
 )

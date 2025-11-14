@@ -310,3 +310,67 @@ def bq_get_table_partitions(
             "num_bytes": 102400,
         }
     ]
+
+
+def run_vertex_ai_code_executor(
+    code: str = "",
+    tool_context: Optional[ToolContext] = None,
+) -> Dict[str, Any]:
+    """Execute Python code using Vertex AI Code Executor (Mock version).
+    
+    This tool allows execution of Python code for data analysis, calculations,
+    and data transformations. It's typically used for:
+    - Calculating rolling averages
+    - Statistical analysis
+    - Data transformations
+    - Outlier detection calculations
+    
+    Args:
+        code: Python code to execute as a string.
+        tool_context: The tool context (optional).
+    
+    Returns:
+        dict: Execution results containing output, stdout, stderr, and execution status.
+    """
+    logger.debug("run_vertex_ai_code_executor (mock) - code length: %s", len(code) if code else 0)
+    
+    # Mock code execution - simulate running Python code
+    mock_output = {
+        "status": "success",
+        "execution_id": "mock_exec_001",
+        "stdout": "Code executed successfully (mock)",
+        "stderr": "",
+        "result": {
+            "output": "Mock execution result",
+            "variables": {
+                "rolling_avg": 5000.0,
+                "current_value": 450.0,
+                "deviation_percent": -91.0,
+                "is_outlier": True,
+            },
+            "dataframe_shape": (100, 5) if "pandas" in code.lower() or "df" in code.lower() else None,
+        },
+        "execution_time_ms": 150,
+        "code_snippet": code[:200] if code else "No code provided",
+    }
+    
+    # Simulate different outputs based on code content
+    if code:
+        code_lower = code.lower()
+        if "rolling" in code_lower or "average" in code_lower:
+            mock_output["result"]["variables"]["rolling_avg"] = 5000.0
+            mock_output["stdout"] = "Calculated 3-month rolling average: 5000.0"
+        elif "outlier" in code_lower or "deviation" in code_lower:
+            mock_output["result"]["variables"]["is_outlier"] = True
+            mock_output["result"]["variables"]["deviation_percent"] = -91.0
+            mock_output["stdout"] = "Outlier detected: -91% deviation from expected"
+        elif "pandas" in code_lower or "dataframe" in code_lower:
+            mock_output["result"]["dataframe_shape"] = (100, 5)
+            mock_output["stdout"] = "DataFrame processed: 100 rows, 5 columns"
+        elif "statistics" in code_lower or "stats" in code_lower:
+            mock_output["result"]["variables"]["mean"] = 5000.0
+            mock_output["result"]["variables"]["std"] = 500.0
+            mock_output["stdout"] = "Statistics calculated: mean=5000.0, std=500.0"
+    
+    logger.debug("run_vertex_ai_code_executor (mock) - execution result: %s", mock_output)
+    return mock_output

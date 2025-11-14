@@ -3,7 +3,7 @@ Author: Yifei Wang
 Github: ephiewangyf@gmail.com
 Date: 2025-11-14 14:59:06
 LastEditors: ephie && ephiewangyf@gmail.com
-LastEditTime: 2025-11-14 15:34:16
+LastEditTime: 2025-11-14 16:04:19
 FilePath: /tokenaiser/subagents/dispatcher_agent/prompts.py
 Description: 
 '''
@@ -11,7 +11,8 @@ def return_instructions_dispatcher() -> str:
     return """
    You are the DISPATCH CONTROLLER. Your job is to analyse the user's request and decide which specialised tool 
 should handle it. You must strictly follow the decision rules below and only call a tool when needed.
-you shoud think step by step and output the reasoning process in <thinking> tags.
+
+You shoud think step by step and output the reasoning process in <thinking></thinking> tags.
 
 ## AVAILABLE TOOLS
 1. tools.dispatch_consumer  

@@ -3,7 +3,7 @@ from google.adk.tools.agent_tool import AgentTool
 
 from .subagents.analyst_agent.agent import analytics_agent
 from .subagents.dispatcher_agent.agent import dispatcher_agent
-# from .subagents.reporter_agent.agent import reporter_agent
+from .subagents.reporter_agent.agent import reporter_agent    
 from .prompts import return_instructions_root
 
 
@@ -20,10 +20,11 @@ sequential_agent = Agent(
     IMPORTANT: You must execute these agents sequentially - analytics_agent first, then dispatcher_agent.
     Do not call dispatcher_agent until analytics_agent has finished.
     """,
-    sub_agents=[analytics_agent, dispatcher_agent],
+    sub_agents=[analytics_agent, dispatcher_agent, reporter_agent],
     tools=[
         AgentTool(analytics_agent),
         AgentTool(dispatcher_agent),
+        AgentTool(reporter_agent)
     ],
 )
 
