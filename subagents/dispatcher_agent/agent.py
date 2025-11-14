@@ -1,25 +1,26 @@
+'''
+Author: Yifei Wang
+Github: ephiewangyf@gmail.com
+Date: 2025-11-14 14:59:06
+LastEditors: ephie && ephiewangyf@gmail.com
+LastEditTime: 2025-11-14 15:31:09
+FilePath: /tokenaiser/subagents/dispatcher_agent/agent.py
+Description: 
+'''
 from google.adk.agents import Agent
-from google.adk.tools.tool_context import ToolContext
 
 from .prompts import return_instructions_dispatcher
+from . import tools
 
-
-def dispatch_consumer(tool_context: ToolContext) -> dict:
-    """Invoke API to dispatch notification to consumer channel."""
-    
-
-    return {"status": "success", "dispatch_event": "Subscriptions have dipped by %10 against daily average"}
-
-def dispatch_editorial(tool_content: ToolContext) -> dict:
-    """Invoke API to dispatch notification to editorial channel."""
-
-    return {"status": "success", "dispatch_event": "COnversion rate has decreased by 20%"}
-
-# Create the funny nerd agent
+# Create the dispatcher agent
 dispatcher_agent = Agent(
     name="dispatcher_agent",
     model="gemini-2.5-pro",
-    description="An agent that tells nerdy jokes about various topics.",
+    description="An agent that dispatches notifications to different channels.",
     instruction=return_instructions_dispatcher(),
-    tools=[dispatch_consumer,dispatch_editorial],
+    tools=[
+        tools.dispatch_consumer,
+        tools.dispatch_editorial,
+        tools.apihub
+    ],
 )
