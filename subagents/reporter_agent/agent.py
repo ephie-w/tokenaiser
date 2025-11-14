@@ -1,3 +1,12 @@
+'''
+Author: Yifei Wang
+Github: ephiewangyf@gmail.com
+Date: 2025-11-14 15:53:12
+LastEditors: ephie && ephiewangyf@gmail.com
+LastEditTime: 2025-11-14 16:00:27
+FilePath: /tokenaiser/subagents/reporter_agent/agent.py
+Description: 
+'''
 from google.adk.agents import Agent
 
 from .prompts import return_instructions_reporter
@@ -8,8 +17,5 @@ reporter_agent = Agent(
     description="An agent that dispatches notifications to different channels.",
     instruction=return_instructions_reporter(),
     tools=[
-        tools.dispatch_consumer,
-        tools.dispatch_editorial,
-        tools.apihub
     ],
 )#dummy
