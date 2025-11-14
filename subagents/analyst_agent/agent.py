@@ -1,21 +1,17 @@
+'''
+Author: Yifei Wang
+Github: ephiewangyf@gmail.com
+Date: 2025-11-14 14:06:39
+LastEditors: ephie && ephiewangyf@gmail.com
+LastEditTime: 2025-11-14 14:26:54
+FilePath: /tokenaiser/subagents/analyst_agent/agent.py
+Description: 
+'''
 import os
+import logging
 
 from google.adk.agents import Agent
 from google.adk.code_executors import VertexAiCodeExecutor
-from google.adk.agents import LlmAgent
-from google.adk.agents.callback_context import CallbackContext
-from google.adk.tools import BaseTool, ToolContext
-from google.adk.tools.bigquery import BigQueryToolset
-from google.adk.tools.bigquery.config import BigQueryToolConfig, WriteMode
-from google.genai import types
-from . import tools
-import logging
-import os
-from typing import Any, Dict, Optional
-
-from google.adk.agents import LlmAgent
-from google.adk.agents.callback_context import CallbackContext
-from google.adk.tools import BaseTool, ToolContext
 from google.adk.tools.bigquery import BigQueryToolset
 from google.adk.tools.bigquery.config import BigQueryToolConfig, WriteMode
 from google.genai import types
@@ -40,6 +36,8 @@ analytics_agent = Agent(
     ),
     tools=[
         bigquery_toolset,
+        tools.bigquery_nl2sql,
+        tools.get_insights
     ],
     generate_content_config=types.GenerateContentConfig(temperature=0.01),
 )

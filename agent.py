@@ -1,7 +1,7 @@
 from google.adk.agents import Agent
 from google.adk.tools.agent_tool import AgentTool
 
-from subagents.analyst_agent import analyst_agent
+from .subagents.analyst_agent.agent import analyst_agent
 root_agent = Agent(
     name="bq-analyst",
     model="gemini-2.0-flash",
