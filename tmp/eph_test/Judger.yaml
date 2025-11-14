@@ -1,5 +1,0 @@
-name: Judger
-agent_class: LoopAgent
-sub_agents:
-  - config_path: ./Integration.yaml
-  - config_path: ./Audit.yaml

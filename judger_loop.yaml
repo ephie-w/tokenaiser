@@ -1,6 +1,0 @@
-name: Judger
-agent_class: LoopAgent
-max_iterations: 3
-sub_agents:
-  - config_path: ./Integration.yaml
-  - config_path: ./Audit.yaml
